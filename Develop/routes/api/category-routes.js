@@ -33,9 +33,9 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new category
-  Category.create({
-    category_name: req.body.name
-  })
+  Category.create(
+    req.body
+  )
   .then((newCategory) => {
     res.json(newCategory);
   })
@@ -46,9 +46,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  Category.update({
-    category_name: req.body.name,
-  },
+  Category.update(req.body,
   {
     where: {
       id: req.params.id,
